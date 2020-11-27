@@ -14,19 +14,21 @@ import Beneficios2 from './Beneficios2';
 import Assem from './Assembleias'
 import pessoasTeste from './PessoasTeste'
 import Lives from './Lives'
+import Sindcapacita from './Sindcapacita'
 
 const Routes = createAppContainer(
   createDrawerNavigator({
-    Home: Welcome,
-    Login: Login,
-    Pessoas: pessoas,
     Notícias: Noticias,
+    Home: Welcome,
+    Pessoas: pessoas,
+    Sindcapacita: Sindcapacita,
     FaleConosco: Denuncias,
     Benefícios: Beneficios2,
     Lives: Lives,
+    Login: Login,
     Teste: pessoasTeste
   }, {
-    initialRouteName: 'Home',
+    initialRouteName: 'Notícias',
     drawerOpenRoute: 'DrawerOpen',
     contentComponent: CustomDrawer,
     contentOptions: {

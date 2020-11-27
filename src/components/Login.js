@@ -147,9 +147,8 @@ export default class Login extends Component {
 const styles = StyleSheet.create({
   container: {
       marginTop: 30,
-      marginLeft: 10,
       flex: 1,
-      backgroundColor: '#fff'
+      backgroundColor: '#eee'
   },
   image: {
       width: 35,
@@ -159,7 +158,6 @@ const styles = StyleSheet.create({
   header: {
       flexDirection: 'row',
       backgroundColor: '#fff',
-      marginLeft: -10
   },
   headerText: {
       textAlign: 'right',
@@ -167,7 +165,8 @@ const styles = StyleSheet.create({
   },
   container1: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#eee',
+    margin: '5%',
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -208,7 +207,7 @@ const styles = StyleSheet.create({
     width: 300,
     height: 42,
     marginTop: 10,
-    backgroundColor: '#fff',
+    backgroundColor: '#eff',
     borderWidth: 3,
     borderColor: '#4934A3',
     borderRadius: 2,

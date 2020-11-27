@@ -8,7 +8,7 @@ class Noticias extends Component {
 
     static navigationOptions = {
         drawerIcon: ({ tintColor }) => (
-            <Icon name='notifications' style={{ fontSize: 24, color: tintColor }} />
+            <Icon name='paper' style={{ fontSize: 24, color: tintColor }} />
         )
       }
 
@@ -70,8 +70,8 @@ class Noticias extends Component {
                                 return(
                                     <View style={styles.container}>
                                         <TouchableWithoutFeedback onPress={ () => Linking.openURL(item.url) } style={{marginBottom:-30}}>
-                                            <View style={{ width: width-50, height: 200, backgroundColor:'#000', marginBottom: -5, borderRadius: 2}}>
-                                            <Image source={{uri: item.urlToImage}} style={[StyleSheet.absoluteFill, {borderRadius: 2}]} />
+                                            <View style={{ width: width-20, height: 200, backgroundColor:'#000', marginBottom: -5, borderRadius: 2}}>
+                                                <Image source={{uri: item.urlToImage}} style={[StyleSheet.absoluteFill, {borderRadius: 2}]} />
                                             <View style={styles.gradient}>
                                                 <Text style={{ position: 'absolute', bottom: 0, color: '#fff', fontSize: 20, padding: 5 }}>{item.title}</Text>
                                             </View>
@@ -85,6 +85,7 @@ class Noticias extends Component {
                                     </View>
                                 )
                             }}
+                            keyExtractor={ item => item.title}
                         />
                     </View>
                 </View>
@@ -100,7 +101,7 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: '#fff'
+        backgroundColor: '#eee'
     },
     text: {
         fontSize: 20,
@@ -108,10 +109,10 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
     },
     container: {
-        marginTop: 30,
+        marginTop: 20,
         marginBottom: 10,
         flex: 1,
-        backgroundColor: '#fff'
+        backgroundColor: '#eee'
     },
     header: {
         padding: 20,

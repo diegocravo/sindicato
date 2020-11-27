@@ -7,7 +7,7 @@ export default class pessoas extends Component {
 
     static navigationOptions = {
         drawerIcon: ({ tintColor }) => (
-            <Icon name='person' style={{ fontSize: 24, color: tintColor }} />
+            <Icon name='people' style={{ fontSize: 24, color: tintColor }} />
         )
       }
 
@@ -75,8 +75,7 @@ export default class pessoas extends Component {
 const styles = StyleSheet.create({
     container: {
         marginTop: 30,
-        marginLeft: 10,
-        backgroundColor: '#fff',  
+        backgroundColor: '#eee',  
         justifyContent: 'center',
     },
     line: {
@@ -87,6 +86,7 @@ const styles = StyleSheet.create({
     },
     avatar: {
         marginTop: 4,
+        marginLeft: 7,
         width: 50,
         height: 50,
         borderRadius: 50,
@@ -145,7 +145,7 @@ const styles = StyleSheet.create({
     header: {
         flexDirection: 'row',
         backgroundColor: '#fff',
-        marginLeft: -10
+        marginLeft: 0
     },
     headerText: {
         textAlign: 'right',

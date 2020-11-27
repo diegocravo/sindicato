@@ -10,6 +10,28 @@ class Lives extends Component {
             <Icon name='radio-button-on' style={{ fontSize: 24, color: tintColor }} />
         )
       }
+      
+    constructor(props) {
+        super(props);
+        this.state = {
+            data: []
+        }
+    }
+
+    loadLives = () => {
+        fetch("https://json.extendsclass.com/bin/44ed36061a13")
+        .then( res => res.json())
+        .then( res => {
+            this.setState({
+                data: res.results || []
+            })
+        })
+
+    }
+
+    componentDidMount() {
+        this.loadLives();
+    }
 
       render() {
           return (
@@ -23,19 +45,33 @@ class Lives extends Component {
                         <Text style={styles.headerText}>Lives</Text>
                     </View>
                 </View>
-                <View style={styles.line}>
-                    <View style={{ width: '72%', backgroundColor:'#fff', marginBottom: -5, borderRadius: 2}}>
-                        <Text style={styles.text}>Nome Sindicato</Text>
-                        <Text style={styles.text}>Descrição Descrição Descr ição Desc rição Descrição Descrição Descrição Descrição Descrição </Text>
-                        <Text style={styles.text}>Data: 27/08</Text>
-                    </View>
-                    <View style={{flex: 1, justifyContent: 'center',}}>
-                        <TouchableOpacity style={styles.botao}>
-                            <Text style={styles.botaoText}>Acesse</Text>
-                        </TouchableOpacity>
-                    </View>
-                </View>  
-                <View style={{marginTop:5, borderBottomColor: '#4934A3', borderBottomWidth: 1.5}}></View>
+
+                <FlatList 
+                    data={this.state.data}
+                    renderItem={({item}) =>(
+                        <View>   
+                            <View style={{backgroundColor:'#eee', margin: 5}}> 
+                                <View style={styles.line}>
+                                    <View style={{ width: '72%', marginBottom: -5, borderRadius: 2}}>
+                                        <Text style={styles.textMain}>{item.nomeSindicato}</Text>
+                                        <Text style={styles.text}>{item.descricao}</Text>
+                                        <Text style={styles.text}>Data: {item.data}</Text>
+                                    </View>
+                                    <View style={{flex: 1, justifyContent: 'center', }}>
+                                        <TouchableOpacity 
+                                            onPress={ () => Linking.openURL(item.link) }
+                                            style={styles.botao}
+                                        >
+                                            <Text style={styles.botaoText}>Acesse</Text>
+                                        </TouchableOpacity>
+                                    </View>
+                                </View>
+                            </View>  
+                            <View style={{marginTop:2, borderBottomColor: '#4934A3', borderBottomWidth: 1.5}}></View>
+                        </View> 
+                )} 
+                keyExtractor={ item => item.id}
+                />
             </View>
 
           )
@@ -54,7 +90,14 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff'
     },
     text: {
-        fontSize: 20,
+        fontSize: 16,
+        color: '#000', 
+        marginLeft: 10,
+        marginRight: 10,
+        marginBottom: 4
+    },
+    textMain: {
+        fontSize: 22,
         color: '#000', 
         marginLeft: 10,
         marginRight: 10,
@@ -77,6 +120,7 @@ const styles = StyleSheet.create({
     },
     line: {
         marginTop: 10,
+        marginBottom: 10,
         flexDirection: 'row',
     },
     botao: {
