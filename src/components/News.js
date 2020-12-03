@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Text, StyleSheet, View, Image, TouchableOpacity, TouchableWithoutFeedback, Share, Linking, ActivityIndicator, FlatList, Dimensions } from "react-native";
 import { Icon } from 'native-base';
 const {width, height} = Dimensions.get('window');
+import Modal from 'react-native-modal';
 //console.disableYellowBox = true;
 
 class Noticias extends Component {
@@ -14,9 +15,15 @@ class Noticias extends Component {
 
     state = {
         news: [],
-        loading: true
+        loading: true,
+        isModalVisible: true
     }
     
+    toggleModal = () =>{
+        this.setState({
+          isModalVisible:!this.state.isModalVisible
+        })
+      }
 
     fetchNews = () => {
 
@@ -74,20 +81,45 @@ class Noticias extends Component {
                                                 <Image source={{uri: item.urlToImage}} style={[StyleSheet.absoluteFill, {borderRadius: 2}]} />
                                             <View style={styles.gradient}>
                                                 <Text style={{ position: 'absolute', bottom: 0, color: '#fff', fontSize: 20, padding: 5 }}>{item.title}</Text>
+                                                <Text 
+                                                    style={{fontSize: 18, backgroundColor: '#4934A3', color: '#fff', padding:5, fontWeight: 'bold', position: 'absolute', top:0, right:0}}
+                                                    onPress={() => this.shareArticle(item.url)}
+                                                >Compartilhe</Text>
                                             </View>
                                             </View>
                                         </TouchableWithoutFeedback>
-                                        <View>
-                                            <Text style={{fontSize: 18, color: '#4934A3', padding:2, fontWeight: 'bold', position: 'absolute', top:0, right:0}}
-                                                        onPress={() => this.shareArticle(item.url)}
-                                                >Compartilhe</Text>
-                                        </View>
                                     </View>
                                 )
                             }}
                             keyExtractor={ item => item.title}
                         />
                     </View>
+                    <Modal 
+                    isVisible={this.state.isModalVisible}
+                    style={{backgroundColor:'white',justifyContent:'center', alignItems: 'center'}}
+                    onBackdropPress={()=>this.toggleModal()}
+                    onSwipeComplete={()=>this.toggleModal()} swipeDirection="right"
+                    animationIn="slideInUp" animationOut="slideOutDown"
+                    > 
+                    <View style={{flex: 1}}>
+                    <View style={{ flex: 1, justifyContent:'center', }}>
+                        <Text style={{textAlign:'center', marginBottom: 10, fontWeight: 'bold', fontSize: 18, color: '#4934A3'}}>
+                        Bem vindo ao 
+                        </Text>
+                        <Text style={{textAlign:'center', marginBottom: 20, fontWeight: 'bold', fontSize: 30, color: '#4934A3'}}>
+                        Sindicato 4.0 
+                        </Text>
+                        <TouchableOpacity 
+                            style={styles.botao}
+                            onPress={ () => {this.toggleModal()}}
+                        >
+                            <Text style={styles.botaoText}>
+                                COMEÇAR
+                            </Text>
+                        </TouchableOpacity>
+                    </View>
+                    </View>
+                    </Modal>
                 </View>
             )
         }
@@ -140,5 +172,19 @@ const styles = StyleSheet.create({
     headerText: {
         textAlign: 'right',
         fontSize: 25,
+    },
+    botao: {
+        width: 300,
+        height: 42,
+        marginTop: 100,
+        backgroundColor: '#4934A3',
+        borderRadius: 2,
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
+    botaoText: {
+        fontSize: 14,
+        fontWeight: 'bold',
+        color: 'white'
     }
 })

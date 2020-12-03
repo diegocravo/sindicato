@@ -2,6 +2,8 @@ import React from 'react';
 import { createAppContainer } from 'react-navigation';
 import { createDrawerNavigator } from 'react-navigation-drawer';
 
+console.disableYellowBox = true;
+
 import Welcome from './Welcome';
 import Login2 from './Login2';
 import pessoas from './pessoas';
@@ -15,18 +17,18 @@ import Assem from './Assembleias'
 import pessoasTeste from './PessoasTeste'
 import Lives from './Lives'
 import Sindcapacita from './Sindcapacita'
+import Trombone from './Denuncias'
 
 const Routes = createAppContainer(
   createDrawerNavigator({
     Notícias: Noticias,
-    Home: Welcome,
     Pessoas: pessoas,
     Sindcapacita: Sindcapacita,
     FaleConosco: Denuncias,
     Benefícios: Beneficios2,
     Lives: Lives,
+    Reclamações: Trombone,
     Login: Login,
-    Teste: pessoasTeste
   }, {
     initialRouteName: 'Notícias',
     drawerOpenRoute: 'DrawerOpen',

@@ -49,7 +49,7 @@ class Beneficios2 extends Component {
                 <FlatList 
                     data={this.state.data}
                     renderItem={({item}) =>(
-                    <View style={{borderRadius: 5, borderWidth: 1.7, backgroundColor: '#fff', borderColor: '#4934A3', marginTop:10, marginLeft: 5, marginRight: 5}}> 
+                    <View style={{borderRadius: 5, borderWidth: 1.5, backgroundColor: '#fff', borderColor: '#4934A3', marginTop:10, marginLeft: 5, marginRight: 5}}> 
                         <View style={{flexDirection: 'row'}}>
                             <View style={{margin: 5, alignItems: 'center', justifyContent: 'center'}}> 
                                 <Image 
