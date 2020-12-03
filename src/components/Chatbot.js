@@ -47,12 +47,41 @@ const steps = [
     },
     {
         id: '3',
-        user: true,
-        trigger: '4'
+        options: [
+            {value: 1, label: 'Pagamento da mensalidade', trigger: '4'},
+            {value: 2, label: 'Contato via email', trigger: '5'},
+            {value: 3, label: 'Filie-se', trigger: '6'},
+            {value: 4, label: 'Outros', trigger: '7'},
+        ],
     },
     {
         id: '4',
         message: 'Entendi, eu posso te ajudar com isso!',
+        end: true
+    },
+    {
+        id: '5',
+        message: 'Email: exemplo@sindicato40.com.br, telefone: (81) 99999-9999',
+        end: true
+    },
+    {
+        id: '6',
+        message: 'Para se Filiar ao Sindicato entre em contato conosco por email ou telefone',
+        end: true
+    },
+    {
+        id: '7',
+        message: 'Me diga qual a sua dúvida.',
+        trigger: '8'
+    },
+    {
+        id: '8',
+        user: true,
+        trigger: '9'
+    },
+    {
+        id: '9',
+        message: 'Vou encaminhar sua dúvida para um de nossos acessores e entraremos em contato com você o mais breve possível. Até mais!',
         end: true
     }
 ]

@@ -19,8 +19,8 @@ export default class pessoas extends Component {
     }
 
     loadUsers = () => {
-        //https://json.extendsclass.com/bin/9a215eaf3675     https://randomuser.me/api/?results=30
-        fetch("https://json.extendsclass.com/bin/9a215eaf3675")
+        //https://json.extendsclass.com/bin/9a215eaf3675     https://randomuser.me/api/?results=30   https://json.extendsclass.com/bin/47f2a150b829
+        fetch("https://json.extendsclass.com/bin/47f2a150b829")
         .then( res => res.json())
         .then( res => {
             this.setState({
@@ -53,14 +53,14 @@ export default class pessoas extends Component {
                                 onPress={ () => Linking.openURL(item.linkedin) }  // () => Linking.openURL(item.linkedin)   () => {Alert.alert('Informações', "{item.name.first}", [ {text: "ok"}] )}
                             >
                             <Image 
-                                source={ {uri: item.picture.thumbnail} }
+                                source={ {uri: item.foto} }
                                 style={styles.avatar}
                             />
                             </TouchableOpacity>
                             <View style={styles.info}>
-                                <Text style={styles.email}>{item.name.first} {item.name.last}</Text>
+                                <Text style={styles.email}>{item.nome} {item.sobrenome}</Text>
                                 <Text style={styles.name}>{item.email}</Text>
-                                <Text style={styles.name}>{item.status} - {item.location.city}</Text> 
+                                <Text style={styles.name}>{item.status} - {item.empresa}</Text> 
                             </View>
                         </View>
                     )} 

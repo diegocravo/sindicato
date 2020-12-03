@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Text, StyleSheet, View, Image, Button, TouchableOpacity, TouchableWithoutFeedback, Share, Linking, ActivityIndicator, FlatList, Dimensions, TextInput } from "react-native";
 import { Icon } from 'native-base';
 import Modal from 'react-native-modal';
+import {Picker} from '@react-native-picker/picker';
 const {width, height} = Dimensions.get('window');
 
 
@@ -14,7 +15,9 @@ class Trombone extends Component {
     }
 
     state = {
-        isModalVisible:false
+        isModalVisible:false,
+        language: 'Assédio Moral',
+        Mensagem: ''
     }
 
     toggleModal = () =>{
@@ -22,6 +25,12 @@ class Trombone extends Component {
             isModalVisible:!this.state.isModalVisible
         })
     }
+
+    changeMessage = () =>{
+        this.setState({
+          mensagem: 'Olá'
+        })
+      }
 
     render() {
 
@@ -106,16 +115,51 @@ class Trombone extends Component {
                             </Text>
                         </View>
 
-                        <View style={{backgroundColor: '#eee', height: 300, borderRadius: 10, margin: 10}}> 
-
+                        <View style={{backgroundColor: '#eee', borderRadius: 10, margin: 10, flexDirection: 'row'}}>  
+                            <Picker
+                                selectedValue={this.state.language}
+                                style={{height: 50, backgroundColor: 'rgba(10, 10, 10, 0)', borderRadius: 50, width: '90%'}}
+                                dropdownIconColor={'#4934A3'}
+                                onValueChange={(itemValue, itemIndex) =>
+                                    this.setState({language: itemValue})
+                                }
+                            >
+                            <Picker.Item label="Assédio Moral" value="Assédio Moral" />
+                            <Picker.Item label="Atraso Pagamentos" value="Atraso Pagamentos" />
+                            <Picker.Item label="Registro Carteira Trabalho" value="Registro Carteira Trabalho" />
+                            <Picker.Item label="Horas Extras" value="Horas Extras" />
+                            <Picker.Item label="Insalubridade / Periculosidade" value="Insalubridade / Periculosidade" />
+                            <Picker.Item label="Salário" value="Salário" />
+                            <Picker.Item label="Outros" value="Outros" />
+                            </Picker>
+                            <View style={{alignItems: 'center', justifyContent: 'center'}}> 
+                                <Image 
+                                    source={require('../assets/dropdown.png')} 
+                                    style={styles.drop}
+                                />
+                            </View>
                         </View>
 
-                        <View style={{flexDirection: 'row', backgroundColor: '#eee', borderRadius: 10, margin: 10}}>
+                        <View style={{backgroundColor: '#eee', height: 300, borderRadius: 10, margin: 10}}> 
+                            <Text>{this.state.Mensagem}</Text>
+                        </View>
+
+                        <View style={{flexDirection: 'row', backgroundColor: '#eee', borderRadius: 10, margin: 10, justifyContent: 'center', alignItems: 'center'}}>
                             <TextInput 
                                 placeholder="Mensagem..." 
+                                placeholderTextColor="#000"
                                 secureTextEntry={false}
-                                style={{width: '70%', textAlign: 'left',marginLeft: 5, marginRight: 7,  backgroundColor:'#eee', borderRadius: 10, padding: 10}}
+                                onSubmitEditing={ () => this.changeMessage()}
+                                style={{width: '78%', textAlign: 'left',marginLeft: 5, marginRight: 7,  backgroundColor:'#eee', borderRadius: 10, padding: 10}}
                             />
+                            <TouchableOpacity
+                                onPress={()=>this.changeMessage}
+                            >
+                                <Image 
+                                    source={require('../assets/send1.png')} 
+                                    style={styles.icon}
+                                />
+                            </TouchableOpacity>
                         </View>
 
                         <View style={{flexDirection: 'row', borderRadius: 10, marginTop: -10}}>
@@ -123,7 +167,7 @@ class Trombone extends Component {
                             <View style={{width: '55%',}}></View>
 
                             <TouchableOpacity
-                                onPress={ () => this.toggleModal()}
+                                
                             >
                                 <Image 
                                     source={require('../assets/camera.png')} 
@@ -132,7 +176,7 @@ class Trombone extends Component {
                             </TouchableOpacity>
 
                             <TouchableOpacity
-                                onPress={ () => this.toggleModal()}
+                                
                             >
                                 <Image 
                                     source={require('../assets/clipe.png')} 
@@ -140,7 +184,7 @@ class Trombone extends Component {
                                 />
                             </TouchableOpacity>
                             <TouchableOpacity
-                                onPress={ () => this.toggleModal()}
+                                
                             >
                                 <Image 
                                     source={require('../assets/microfone.png')} 
@@ -155,7 +199,7 @@ class Trombone extends Component {
 
                     <TouchableOpacity 
                     style={{marginBottom: 10,  backgroundColor:'#4934A3', marginLeft: 30,marginRight: 30, marginTop: 20, fontWeight: 'bold', fontSize: 14}} 
-                    onPress={()=>this.closeModal()}
+                    onPress={()=> alert('Reclamação cadastrada com sucesso!')}
                     >
                         <Text style={{color:'white',textAlign:'center',padding:10}}>
                             ENVIAR
@@ -257,8 +301,14 @@ const styles = StyleSheet.create({
         margin: 5
     },
     icon: {
-        width: 40,
-        height: 40,
+        width: 35,
+        height: 35,
+        borderRadius: 50,
+        margin: 5
+    },
+    drop: {
+        width: 15,
+        height: 15,
         borderRadius: 50,
         margin: 5
     }

@@ -26,13 +26,12 @@ class Noticias extends Component {
       }
 
     fetchNews = () => {
-
-        // aqui colocar o JSON Correto
-        fetch("https://newsapi.org/v2/top-headlines?country=us&apiKey=54bf0e648505478f9e61715886e424f6")
+        // https://json.extendsclass.com/bin/b9a7fb2ff5cd     https://newsapi.org/v2/top-headlines?country=us&apiKey=54bf0e648505478f9e61715886e424f6
+        fetch("https://json.extendsclass.com/bin/b9a7fb2ff5cd")
         .then( res => res.json())
         .then( res => {
             this.setState({
-                news: res.articles, loading : false 
+                news: res.results, loading : false 
             })
         })
     }
@@ -76,14 +75,14 @@ class Noticias extends Component {
                             renderItem={({item}) => {
                                 return(
                                     <View style={styles.container}>
-                                        <TouchableWithoutFeedback onPress={ () => Linking.openURL(item.url) } style={{marginBottom:-30}}>
+                                        <TouchableWithoutFeedback onPress={ () => Linking.openURL(item.link) } style={{marginBottom:-30}}>
                                             <View style={{ width: width-20, height: 200, backgroundColor:'#000', marginBottom: -5, borderRadius: 2}}>
-                                                <Image source={{uri: item.urlToImage}} style={[StyleSheet.absoluteFill, {borderRadius: 2}]} />
+                                                <Image source={{uri: item.img}} style={[StyleSheet.absoluteFill, {borderRadius: 2}]} />
                                             <View style={styles.gradient}>
-                                                <Text style={{ position: 'absolute', bottom: 0, color: '#fff', fontSize: 20, padding: 5 }}>{item.title}</Text>
+                                                <Text style={{ position: 'absolute', bottom: 0, color: '#fff', fontSize: 20, padding: 5 }}>{item.titulo}</Text>
                                                 <Text 
                                                     style={{fontSize: 18, backgroundColor: '#4934A3', color: '#fff', padding:5, fontWeight: 'bold', position: 'absolute', top:0, right:0}}
-                                                    onPress={() => this.shareArticle(item.url)}
+                                                    onPress={() => this.shareArticle(item.link)}
                                                 >Compartilhe</Text>
                                             </View>
                                             </View>
@@ -91,7 +90,7 @@ class Noticias extends Component {
                                     </View>
                                 )
                             }}
-                            keyExtractor={ item => item.title}
+                            keyExtractor={ item => item.id}
                         />
                     </View>
                     <Modal 

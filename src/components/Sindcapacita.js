@@ -90,7 +90,7 @@ class Sindcapacita extends Component{
                             <View style={{ width: width-20, height: 150, backgroundColor:'#000', marginBottom: -5, borderRadius: 5}}>
                                 <Image source={{uri: 'https://www.catho.com.br/educacao/blog/wp-content/uploads/sites/2/2018/10/2018-10-03-como-funciona-o-curso-de-administracao.png'}} style={[StyleSheet.absoluteFill, {borderRadius: 2}]} />
                                 <View style={styles.gradient}>
-                                    <Text style={{ position: 'absolute', bottom: 70, backgroundColor: 'rgba(73, 52, 163, 0.7)', color: '#fff', fontSize: 24, padding: 5, width: Dimensions.get('window').width - 20, textAlign: 'center'}}>Extensão</Text>
+                                    <Text style={{ position: 'absolute', bottom: 70, backgroundColor: 'rgba(73, 52, 163, 0.7)', color: '#fff', fontSize: 24, padding: 5, textAlign: 'center'}}>Extensão</Text>
                                     <Text style={{ position: 'absolute', bottom: 10, color: '#fff', fontSize: 15, padding: 5 }}>Cursos de curta e média duração</Text>
                                 </View>
                             </View>
