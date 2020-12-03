@@ -4,6 +4,7 @@ import { Icon } from 'native-base';
 import Modal from 'react-native-modal';
 const {width, height} = Dimensions.get('window');
 
+
 class Trombone extends Component {
 
     static navigationOptions = {
@@ -39,10 +40,10 @@ class Trombone extends Component {
 
                 <View>
                     <View>   
-                        <View style={{backgroundColor:'#eee', margin: 5}}> 
+                        <View style={{backgroundColor:'#fff', margin: 5, marginTop: 10, borderRadius: 10}}> 
                             <View style={styles.line}>
-                                <View style={{ width: '72%', marginBottom: -5, borderRadius: 2}}>
-                                    <Text style={styles.textMain}>Limpeza Banheiros</Text>
+                                <View style={{ width: '72%', marginBottom: -5}}>
+                                    <Text style={styles.textMain}>Horas Extras</Text>
                                     <Text style={styles.text}>Status: Em Andamento</Text>
                                     <Text style={styles.text}>Data: 12/12/2020</Text>
                                 </View>
@@ -56,14 +57,13 @@ class Trombone extends Component {
                                 </View>
                             </View>
                         </View>  
-                        <View style={{marginTop:2, borderBottomColor: '#4934A3', borderBottomWidth: 1.5}}></View>
                     </View>
 
                     <View>   
-                        <View style={{backgroundColor:'#eee', margin: 5}}> 
+                        <View style={{backgroundColor:'#fff', margin: 5, marginTop: 10, borderRadius: 10}}> 
                             <View style={styles.line}>
                                 <View style={{ width: '72%', marginBottom: -5, borderRadius: 2}}>
-                                    <Text style={styles.textMain}>Limpeza Banheiros</Text>
+                                    <Text style={styles.textMain}>Assédio Moral</Text>
                                     <Text style={styles.text}>Status: Finalizado</Text>
                                     <Text style={styles.text}>Data: 09/10/2020</Text>
                                 </View>
@@ -77,7 +77,6 @@ class Trombone extends Component {
                                 </View>
                             </View>
                         </View>  
-                        <View style={{marginTop:2, borderBottomColor: '#4934A3', borderBottomWidth: 1.5}}></View>
                     </View>
                 </View>
 
@@ -100,23 +99,69 @@ class Trombone extends Component {
                 animationIn="slideInUp" animationOut="slideOutDown"
                 >
                     <View> 
-                        <Text>Olá</Text>
 
-                        <View style={{flexDirection: 'row'}}>
+                        <View style={{alignItems: 'center'}}> 
+                            <Text style={styles.title}>
+                                Bote a Boca no Trombone
+                            </Text>
+                        </View>
+
+                        <View style={{backgroundColor: '#eee', height: 300, borderRadius: 10, margin: 10}}> 
+
+                        </View>
+
+                        <View style={{flexDirection: 'row', backgroundColor: '#eee', borderRadius: 10, margin: 10}}>
                             <TextInput 
-                                placeholder="..." 
+                                placeholder="Mensagem..." 
                                 secureTextEntry={false}
-                                style={{width: '80%', textAlign: 'left',marginLeft: 5, marginRight: 7,  backgroundColor:'#eee', borderRadius: 10}}
+                                style={{width: '70%', textAlign: 'left',marginLeft: 5, marginRight: 7,  backgroundColor:'#eee', borderRadius: 10, padding: 10}}
                             />
+                        </View>
+
+                        <View style={{flexDirection: 'row', borderRadius: 10, marginTop: -10}}>
+
+                            <View style={{width: '55%',}}></View>
+
+                            <TouchableOpacity
+                                onPress={ () => this.toggleModal()}
+                            >
+                                <Image 
+                                    source={require('../assets/camera.png')} 
+                                    style={styles.icon}
+                                />
+                            </TouchableOpacity>
+
+                            <TouchableOpacity
+                                onPress={ () => this.toggleModal()}
+                            >
+                                <Image 
+                                    source={require('../assets/clipe.png')} 
+                                    style={styles.icon}
+                                />
+                            </TouchableOpacity>
                             <TouchableOpacity
                                 onPress={ () => this.toggleModal()}
                             >
                                 <Image 
                                     source={require('../assets/microfone.png')} 
-                                    style={styles.user}
+                                    style={styles.icon}
                                 />
                             </TouchableOpacity>
+
                         </View>
+                    </View>
+
+                    <View> 
+
+                    <TouchableOpacity 
+                    style={{marginBottom: 10,  backgroundColor:'#4934A3', marginLeft: 30,marginRight: 30, marginTop: 20, fontWeight: 'bold', fontSize: 14}} 
+                    onPress={()=>this.closeModal()}
+                    >
+                        <Text style={{color:'white',textAlign:'center',padding:10}}>
+                            ENVIAR
+                        </Text>
+                    </TouchableOpacity>
+
                     </View>
                 </Modal>
 
@@ -149,11 +194,14 @@ const styles = StyleSheet.create({
         marginBottom: 4
     },
     textMain: {
-        fontSize: 22,
-        color: '#000', 
+        fontSize: 20,
+        color: '#4934A3', 
+        fontWeight: 'bold',
         marginLeft: 10,
         marginRight: 10,
-        marginBottom: 4
+        marginBottom: 4,
+        borderBottomWidth: 0.5, 
+        borderBottomColor: '#4934A3',
     },
     image: {
         marginLeft: 10,
@@ -206,6 +254,13 @@ const styles = StyleSheet.create({
         width: 45,
         height: 45,
         borderRadius: 50,
+        margin: 5
+    },
+    icon: {
+        width: 40,
+        height: 40,
+        borderRadius: 50,
+        margin: 5
     }
 
 })
