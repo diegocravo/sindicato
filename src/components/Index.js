@@ -1,17 +1,15 @@
-import React, { Component } from 'react';
-import { createAppContainer, createStackNavigation } from 'react-navigation';
+import React, { Component } from "react";
+import { createAppContainer, createStackNavigation } from "react-navigation";
 
-import Login from './Login';
+import Login from "./Login";
 
-const MainNav = createStackNavigation (
-    {
-        Login: {
-            screen: Login,
-            navigationOptions: {
-                header: null,
-            }
-        }
-    }
-)
+const MainNav = createStackNavigation({
+  Login: {
+    screen: Login,
+    navigationOptions: {
+      header: null,
+    },
+  },
+});
 
 export default createAppContainer(MainNav);
