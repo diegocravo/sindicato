@@ -32,7 +32,7 @@ export default class Denuncias extends Component {
           <ChatBot
             style={styles.chat}
             steps={steps}
-            botAvatar="https://previews.123rf.com/images/sabelskaya/sabelskaya1610/sabelskaya161000126/64764058-pretty-african-girl-smiling-facial-expression-cartoon-vector-illustrations-isolated-on-white-backgro.jpg"
+            botAvatar=""
           />
         </View>
       </View>

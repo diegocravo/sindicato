@@ -25,7 +25,7 @@ class Beneficios2 extends Component {
   }
 
   loadBenefits = () => {
-    fetch("https://json.extendsclass.com/bin/c12dde71e0ff")
+    fetch("")
       .then((res) => res.json())
       .then((res) => {
         this.setState({

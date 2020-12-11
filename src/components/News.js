@@ -36,7 +36,7 @@ class Noticias extends Component {
   };
 
   fetchNews = () => {
-    fetch("https://json.extendsclass.com/bin/b9a7fb2ff5cd")
+    fetch("")
       .then((res) => res.json())
       .then((res) => {
         this.setState({

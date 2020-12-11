@@ -25,7 +25,7 @@ class Lives extends Component {
   }
 
   loadLives = () => {
-    fetch("https://json.extendsclass.com/bin/44ed36061a13")
+    fetch("")
       .then((res) => res.json())
       .then((res) => {
         this.setState({

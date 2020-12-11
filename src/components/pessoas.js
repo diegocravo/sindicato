@@ -25,7 +25,7 @@ export default class pessoas extends Component {
   }
 
   loadUsers = () => {
-    fetch("https://json.extendsclass.com/bin/47f2a150b829")
+    fetch("")
       .then((res) => res.json())
       .then((res) => {
         this.setState({
