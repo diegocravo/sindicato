@@ -143,6 +143,7 @@ class Noticias extends Component {
               }}
               keyExtractor={(item) => item.id}
             />
+            <View style={{height: 40}}></View>
           </View>
           <Modal
             isVisible={this.state.isModalVisible}

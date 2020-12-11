@@ -180,7 +180,7 @@ function CustomDrawer({ ...props }) {
                 fontWeight: "bold",
                 fontSize: 14,
               }}
-              onPress={() => this.closeModal()}
+              onPress={toggleModal}
             >
               <Text
                 style={{ color: "white", textAlign: "center", padding: 10 }}
